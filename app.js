@@ -1,6 +1,7 @@
 import express, { urlencoded } from 'express';
 import dotenv from "dotenv";
 import  {connectDB}  from './src/config/db.js';
+import router from './src/routes/authRoutes.js';
 
 dotenv.config();
 
@@ -11,9 +12,7 @@ app.use(express.urlencoded({extended:true}));
 
 connectDB();
 
-app.get('/',(req,res)=>{
-    res.send("Gym Application Server is Running fine!");
-})
+app.use("/api/auth",router);
 
 app.listen(process.env.PORT,()=>{
     console.log("Server is running on Port number",process.env.PORT);

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userSchmea=new mongoose.Schema(
+const userSchema=new mongoose.Schema(
     {
         name:{
             type:String,
@@ -14,8 +14,6 @@ const userSchmea=new mongoose.Schema(
         phone:{
             type:Number,
             required:true,
-            min:10,
-            max:10
         },
         password:{
             type:String,
@@ -37,3 +35,5 @@ const userSchmea=new mongoose.Schema(
         }
     }
 )
+
+export const user=mongoose.model("Users",userSchema);

@@ -1,7 +1,8 @@
 import express, { urlencoded } from 'express';
 import dotenv from "dotenv";
 import  {connectDB}  from './src/config/db.js';
-import router from './src/routes/authRoutes.js';
+import authRouter from './src/routes/authRoutes.js';
+import membershipRouter  from './src/routes/membershipRoutes.js';
 
 dotenv.config();
 
@@ -12,7 +13,8 @@ app.use(express.urlencoded({extended:true}));
 
 connectDB();
 
-app.use("/api/auth",router);
+app.use("/api/auth",authRouter);
+app.use("/api/membership",membershipRouter);
 
 app.listen(process.env.PORT,()=>{
     console.log("Server is running on Port number",process.env.PORT);

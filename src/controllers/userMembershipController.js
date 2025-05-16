@@ -43,3 +43,42 @@ export const getUserMembership=async(req,res)=>{
         res.status(500).json({Success:false,message:"Internal Server Error"});
     }
 }
+
+export const getAllUserMembership=async(req,res)=>{
+    try{
+         const membership=await userMembership.find({});
+         res.status(200).json({Success:true,message:"All user membership",membership});
+    }catch(err){
+        console.log(err.message);
+        res.status(500).json({Success:false,message:"Internal Server Error"});
+    }
+}
+
+export const updateUserMembership=async(req,res)=>{
+    try{
+         const {id}=req.params;
+         const data=req.body;
+         const membership=await updateUserMembership.findByIdAndUpdate(id,data,{new:true});
+         if(!membership){
+            return res.status(404).json({Success:"false",messge:"Membership Not found!"});
+         }
+         res.status(200).json({Success:true,message:"Membership Updated Successfully",membership});
+    }catch(err){
+        console.log(err.message);
+        res.status(500).json({Success:false,message:"Internal Server Error"});
+    }
+}
+
+export const deleteMembership=async(req,res)=>{
+    try{
+         const {id}=req.params;
+         const membership=await userMembership.findByIdAndDelete(id);
+         if(!membership){
+            return res.status(404).json({Success:"false",messge:"Membership Not found!"});
+         }
+         res.status(200).json({Success:true,message:"Membership Deleted Successfully"});
+    }catch(err){
+        console.log(err.message);
+        res.status(500).json({Success:false,message:"Internal Server Error"});
+    }
+}

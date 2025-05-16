@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const planDetails = {
   Basic: {
-    duration: "1 Month",
+    duration: 1,  // duration in months
     price: 499,
     benefits: ["Access to gym during off-peak hours", "Free diet consultation"],
   },
   Elite3: {
-    duration: "3 Months",
+    duration: 3,
     price: 1299,
     benefits: [
       "24/7 Gym Access",
@@ -16,7 +16,7 @@ const planDetails = {
     ],
   },
   Elite6: {
-    duration: "6 Months",
+    duration: 6,
     price: 2299,
     benefits: [
       "24/7 Gym Access",
@@ -26,7 +26,7 @@ const planDetails = {
     ],
   },
   Pro: {
-    duration: "1 year",
+    duration: 12,
     price: 3999,
     benefits: [
       "Unlimited Gym Access",

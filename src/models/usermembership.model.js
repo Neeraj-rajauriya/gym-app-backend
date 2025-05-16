@@ -9,7 +9,7 @@ const userMembershipSchema=new mongoose.Schema(
         },
         membershipPlanId:{
             type:mongoose.Schema.Types.ObjectId,
-            ref:"membershipPlan",
+            ref:"MembershipPlan",
             required:true
         },
         paymentStatus:{
